@@ -3,6 +3,8 @@
 This project provides some guideance on using a domain driven application
 structure with the simplerr projact and Angular front end.
 
+Angular app creation wa started with `ng new --minimal=true --skipTests=true simplerr-angular7`
+
 ## Changes from the default Angular project structure
 
 The default angular layout was falttened as certain aspects like e2e, and src
@@ -106,7 +108,7 @@ the example below we simply add them to the main app view.
     # file: src/app/app.component.html
     <button routerLink="/dasboard">Dashboard</button>
 
-**Loazy loading the feature modules (including routes)**
+**Lazy loading the feature modules (including routes)**
 
 This code hooks in the feature to the main application.
 
