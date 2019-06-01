@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { LayoutComponent } from './layout/layout.component';
+import { SummaryComponent } from './summary/summary.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
-  declarations: [LayoutComponent],
+  declarations: [SummaryComponent, DetailComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule

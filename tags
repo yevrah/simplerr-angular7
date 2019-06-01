@@ -4,18 +4,3 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-autoWatch	karma.conf.js	/^    autoWatch: true,$/;"	P
-basePath	karma.conf.js	/^    basePath: '',$/;"	P
-browsers	karma.conf.js	/^    browsers: ['Chrome'],$/;"	P
-clearContext	karma.conf.js	/^      clearContext: false \/\/ leave Jasmine Spec Runner output visible in browser$/;"	P
-colors	karma.conf.js	/^    colors: true,$/;"	P
-dir	karma.conf.js	/^      dir: require('path').join(__dirname, '.\/coverage\/admin'),$/;"	P
-fixWebpackSourcePaths	karma.conf.js	/^      fixWebpackSourcePaths: true$/;"	P
-frameworks	karma.conf.js	/^    frameworks: ['jasmine', '@angular-devkit\/build-angular'],$/;"	P
-logLevel	karma.conf.js	/^    logLevel: config.LOG_INFO,$/;"	P
-plugins	karma.conf.js	/^    plugins: [$/;"	P
-port	karma.conf.js	/^    port: 9876,$/;"	P
-reporters	karma.conf.js	/^    reporters: ['progress', 'kjhtml'],$/;"	P
-reports	karma.conf.js	/^      reports: ['html', 'lcovonly', 'text-summary'],$/;"	P
-restartOnFileChange	karma.conf.js	/^    restartOnFileChange: true$/;"	P
-singleRun	karma.conf.js	/^    singleRun: false,$/;"	P

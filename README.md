@@ -7,9 +7,12 @@ Angular app creation wa started with `ng new --minimal=true --skipTests=true sim
 
 ## Changes from the default Angular project structure
 
-The default angular layout was falttened as certain aspects like e2e, and src
-fodlers do not make sense. Our project structure follows domain level
-organisation.
+Our project structure follows domain level organisation. The project was
+flattened - with the removal os src as a subdirectory and files such as
+main.ts, styles.css, index.html, and so on were moved to the app folder.
+
+You will also need to replace all references to src in the package.json and
+anguylar.json files.
 
 **What's a domain organisation?** A domain referes to application/feature level
 entity, organisation around domains placess backend and front end in the same
@@ -48,16 +51,15 @@ would be logicaqllly placed here.
 
 ## Local development
 
-The python project should always render from the angular dist folder. Making
-dist builds can become cumbersone though. To simplify the process the following
-changes have been made to the project.
+The simplerr server should always render from the angular dist folder. Making
+dist builds can become cumbersone though. To simplify the development process
+the following changes have been made to the project.
 
 **Use a proxy:** A proxy is a piece of software which is in between your
 JavaScript/Angular app doing the Ajax request and your backend API.
 
 The command `ng serve` is nothing other than the Webpack development server
-which comes with some [nice configuration
-options](https://webpack.js.org/configuration/dev-server/#devserver-proxy).
+which comes with some [nice configuration options](https://webpack.js.org/configuration/dev-server/#devserver-proxy).
 
 To set it up, we need to create a file proxy.conf.json at the root of our
 Angular CLI project. The content should look as follows
@@ -94,25 +96,27 @@ https://angular.io/guide/lazy-loading-ngmodules for full details.
 **Create the feature module and component**
 
 First start by creating the feature module - note that you wont have to
-register this with the app as we use lazyloading in the application routes.
+register this with the app as we use lazyloading in the application routes. Following our domain structure we will not create it in the app folder - which is now resereved for boostrapping the app.
 
-    $ ng g m dashboard --routing     # add feature module
-    $ ng g c dashboard/Summary       # add your components
-    $ ng g c dashboard/DetailView
+    $ mkdir dashboard
+    $ cd dashboard
+    $ ng g m dashboard --routing --flat     # add feature module in current folder
+    $ ng g c summary/Summary --flat       # add your components
+    $ ng g c detail/Detail --flat
 
 **Add some links to the components**
 
 Add links to the routes where appropriate - for ecxample in navigation bars. In
 the example below we simply add them to the main app view.
 
-    # file: src/app/app.component.html
+    # file: app.component.html
     <button routerLink="/dasboard">Dashboard</button>
 
 **Lazy loading the feature modules (including routes)**
 
 This code hooks in the feature to the main application.
 
-    # file: src/app/app-routing.module.ts
+    # file: app-routing.module.ts
     const routes: Routes = [
       {
         path: 'dashboard',
@@ -122,25 +126,21 @@ This code hooks in the feature to the main application.
 
 To get this working make sure dynamic module is supported.
 
-    # file: tsconfig.server.json
-      "compilerOptions": {
+    # file: tsconfig.json
         ...
         "module": "esnext",
         ...
-      },
 
 Now configure the feature modules routes.
 
-    # file: /src/app/dashboard/dashboard-routing.module.ts
+    # file: dashboard/dashboard-routing.module.ts
     ...
-    import { SummaryModule } from './dashboard/summary/summary.component';
-
+    import { SummaryComponent } from './summary/summary.component';
 
     const routes: Routes = [
-      ...
-      {
-        path: '',
-        component: SummaryComponent
-      }
-      ...
+        {
+            path: '',
+            component: SummaryComponent
+        }
     ];
+    ...

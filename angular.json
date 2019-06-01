@@ -3,34 +3,51 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "admin": {
+    "simplerr-angular7-minimal": {
       "root": "",
       "sourceRoot": ".",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:component": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:module": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/admin",
-            "index": "app/index.html",
-            "main": "app/main.ts",
-            "polyfills": "./app/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "outputPath": "dist/simplerr-angular7-minimal",
+            "index": "main/index.html",
+            "main": "main/main.ts",
+            "polyfills": "main/polyfills.ts",
+            "tsConfig": "main/tsconfig.app.json",
             "assets": [
-              "favicon.ico",
-              "assets"
+              "main/favicon.ico",
+              "main/assets"
             ],
             "styles": [
-                "./node_modules/@clr/icons/clr-icons.min.css",
-                "./node_modules/@clr/ui/clr-ui.min.css",
-                "./app/styles.css"
+              "main/styles.css"
             ],
-            "scripts": [
-                "./node_modules/@webcomponents/custom-elements/custom-elements.min.js",
-                "./node_modules/@clr/icons/clr-icons.min.js"
-            ],
+            "scripts": [],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -63,34 +80,34 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "admin:build"
+            "browserTarget": "simplerr-angular7-minimal:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "admin:build:production"
+              "browserTarget": "simplerr-angular7-minimal:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "admin:build"
+            "browserTarget": "simplerr-angular7-minimal:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "test.ts",
-            "polyfills": "./app/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "main": "main/test.ts",
+            "polyfills": "main/polyfills.ts",
+            "tsConfig": "main/tsconfig.spec.json",
+            "karmaConfig": "main/karma.conf.js",
             "styles": [
-              "./app/styles.css"
+              "main/styles.css"
             ],
             "scripts": [],
             "assets": [
-              "favicon.ico",
-              "assets"
+              "main/favicon.ico",
+              "main/assets"
             ]
           }
         },
@@ -98,37 +115,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json"
+              "main/tsconfig.app.json",
+              "main/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "admin-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "admin:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "admin:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
@@ -137,5 +126,5 @@
       }
     }
   },
-  "defaultProject": "admin"
+  "defaultProject": "simplerr-angular7-minimal"
 }
