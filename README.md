@@ -3,7 +3,7 @@
 This project provides some guideance on using a domain driven application
 structure with the simplerr projact and Angular front end.
 
-Angular app creation wa started with `ng new --minimal=true --skipTests=true simplerr-angular7`
+Angular app creation was started with `ng new --minimal=true --skipTests=true simplerr-angular7`
 
 ## Changes from the default Angular project structure
 
@@ -71,7 +71,7 @@ contents should contain the following json config:
     # file: proxy.conf.json
     {
       "**": {
-        "target": "http://localhost:3000",
+        "target": "http://localhost:9000",
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
@@ -86,7 +86,7 @@ And finally make a quick change to package.json to enable the proxy and start th
         "start": "ng serve --proxy-config proxy.conf.json",
         ...
 
-To utilise this, simply start the server with `npm start` - note we no lover use `ng-serve`.
+To utilise this, simply start the server with `npm start` - note we no longer use `ng-serve`.
 
 ## Adding a new feature folder
 
@@ -100,7 +100,7 @@ register this with the app as we use lazyloading in the application routes. Foll
 
     $ mkdir dashboard
     $ cd dashboard
-    $ ng g m dashboard --routing --flat     # add feature module in current folder
+    $ ng g m dashboard --routing --flat   # add feature module in current folder
     $ ng g c summary/Summary --flat       # add your components
     $ ng g c detail/Detail --flat
 
@@ -127,9 +127,9 @@ This code hooks in the feature to the main application.
 To get this working make sure dynamic module is supported.
 
     # file: tsconfig.json
-        ...
-        "module": "esnext",
-        ...
+    ...
+    "module": "esnext",
+    ...
 
 Now configure the feature modules routes.
 
@@ -144,3 +144,36 @@ Now configure the feature modules routes.
         }
     ];
     ...
+
+## Adding the API python bits
+
+Its now time to start our integration test - and see if it all works as expected - add the following file to test out our api
+
+    # file: dashboard/detail/api.py
+    from simplerr import web
+
+    @web('/dashboard/detail/api')
+    def api(request):
+        return {'message': 'hello world'}
+
+In the project root setup the python environment with the following bash commands:
+
+    $ python3 -m venv env
+    $ source env/bin/activate
+    $ pip install simplerr
+    ...
+    $ python -m simplerr runserver
+
+     * Running on http://localhost:9000/ (Press CTRL+C to quit)
+     * Restarting with stat
+     * Debugger is active!
+     * Debugger PIN: XXX-XXX-XXX
+
+Open up the browser to http://localhost:9000/dashboard/detail/api
+
+We should not get the same response from our angular app on port 4200 - full url: http://localhost:4200/dashboard/detail/api
+
+En Conclusión
+-------------
+
+The default angular project structure is cumbersome - but with some mangling it can be transformed into a productive and simple environment.
