@@ -19,6 +19,8 @@ Key terms top remember when discussung the structure:
   * Module - Contains alll the code for that applicaiton, applications generally contain everything you would normally find after logging in.
   * Feature - contains sub components for the application, a feature should be discrete = generally one page and its sub components.
 
+```
+
     Application Folder
         └── Module Folder
             └── name.routing.module.ts
@@ -27,7 +29,7 @@ Key terms top remember when discussung the structure:
                     └── /assets <-- such as images, styles, etc.
                     └── api.py  <-- api calls
         └── Module Two Folder
-
+```
 
 **What's the alternative to a domain structure?** Generally a functional
 structue is considered to be the main alternative. In this structure similar
