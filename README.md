@@ -156,6 +156,32 @@ Its now time to start our integration test - and see if it all works as expected
     def api(request):
         return {'message': 'hello world'}
 
+    # file: dashboard/detail/detail.component.ts
+    import { Component, OnInit } from '@angular/core';
+    import {Observable} from 'rxjs/Observable';
+    import {HttpClient} from '@angular/common/http';
+
+    @Component({
+      selector: 'app-dashboard-details',
+      template: `
+        <h1 *ngIf="detail$ | async as detail else noData">
+            {{ detail.message }}
+        </h1>
+        <ng-template #naData>No Data! Or Details!</ng-template>
+      `,
+      styles: []
+    })
+    export class DashboardComponent implements OnInit {
+        details$
+
+        constructor(private http:HttpClient) { }
+
+        ngOnInit() {
+            this.detail$ = this.http
+            .get('http://127.0.0.1/dashboard/detail/api')
+        }
+
+    }
 In the project root setup the python environment with the following bash commands:
 
     $ python3 -m venv env
