@@ -30,9 +30,6 @@ Key terms top remember when discussung the structure:
         └── Module Folder
             └── name.routing.module.ts
             └── name.module.ts
-                └── Features
-                    └── /assets <-- such as images, styles, etc.
-                    └── api.py  <-- api calls
         └── Module Two Folder
 ```
 
@@ -149,10 +146,10 @@ Now configure the feature modules routes.
 
 Its now time to start our integration test - and see if it all works as expected - add the following file to test out our api
 
-    # file: dashboard/detail/api.py
+    # file: api/dashboard/detail/api.py
     from simplerr import web
 
-    @web('/dashboard/detail/api')
+    @web('/api/dashboard/detail/api')
     def api(request):
         return {'message': 'hello world'}
 
