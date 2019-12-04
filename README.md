@@ -146,10 +146,10 @@ Now configure the feature modules routes.
 
 Its now time to start our integration test - and see if it all works as expected - add the following file to test out our api
 
-    # file: api/dashboard/detail/api.py
+    # file: api/index.py
     from simplerr import web
 
-    @web('/api/dashboard/detail/api')
+    @web('/api/dashboard/detail')
     def api(request):
         return {'message': 'hello world'}
 
@@ -175,7 +175,7 @@ Its now time to start our integration test - and see if it all works as expected
 
         ngOnInit() {
             this.detail$ = this.http
-            .get('http://127.0.0.1/dashboard/detail/api')
+            .get('http://127.0.0.1:4200/api/dashboard/detail')
         }
 
     }

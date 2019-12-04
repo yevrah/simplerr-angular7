@@ -1,5 +1,5 @@
 from simplerr import web
 
-@web('/dashboard/detail/api')
+@web('/api/dashboard/detail')
 def api(request):
     return {'message': 'hello world'}
