@@ -18,7 +18,7 @@ You will also need to replace all references to `./src` in the `package.json` an
 entity, organisation around domains places back end and front end in the same
 folder, ass well as assets and libraries.
 
-Key terms top remember when discussung the structure:
+Key terms top remember when discussing the structure:
 
   * Application - the same folder that .git lives in, contains multiple modules
   * Module - Contains all the code for that application, applications generally contain everything you would normally find after logging in.
@@ -48,9 +48,9 @@ would be logically placed here.
 
 ## Local development
 
-The simplerr server should always render from the angular dist folder. Making
-dist builds can become cumbersome though. To simplify the development process
-the following changes have been made to the project.
+The simplerr server should always render the website from the angular dist
+folder. Making dist builds can become cumbersome though. To simplify the
+development process the following changes have been made to the project.
 
 **Use a proxy:** A proxy is a piece of software which is in between your
 JavaScript/Angular app doing the Ajax request and your back end API.
@@ -83,7 +83,7 @@ And finally make a quick change to package.json to enable the proxy and start th
         "start": "ng serve --proxy-config proxy.conf.json",
         ...
 
-To utilise this, simply start the server with `npm start` - note we no longer use `ng-serve`.
+To utilise this, simply start the server with `npm run start` - note we no longer use `ng-serve`.
 
 ## Adding a new feature folder
 
@@ -153,6 +153,10 @@ Its now time to start our integration test - and see if it all works as expected
     def api(request):
         return {'message': 'hello world'}
 
+
+And now the changes to the details page, which loads the api content. Note that
+the template handles async call with `async as detail`.
+
     # file: dashboard/detail/detail.component.ts
     import { Component, OnInit } from '@angular/core';
     import {Observable} from 'rxjs/Observable';
@@ -179,6 +183,7 @@ Its now time to start our integration test - and see if it all works as expected
         }
 
     }
+
 In the project root setup the python environment with the following bash commands:
 
     $ python3 -m venv env
